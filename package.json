@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:tailwind": "tailwindcss build src/index.css -o src/tailwind.output.scss",
+    "build:tailwind": "PUBLIC_URL=https://alexbeje.github.io/calculator/ tailwindcss build src/index.css -o src/tailwind.output.scss",
     "prestart": "npm run build:tailwind",
     "prebuild": "npm run build:tailwind",
     "test": "react-scripts test",
