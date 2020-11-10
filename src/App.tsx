@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+// Style
 import "./App.scss";
 
+// Icons
+import { AiFillGithub, AiOutlineCopyrightCircle } from "react-icons/ai";
+import { FiFigma } from "react-icons/fi";
+
+// Components
 import CalculatorKeys from "./components/calculatorKeys/calculatorKeys.component";
 
 function App() {
-  const operatorsList = [
+  const [portraitOperatorsList] = useState([
+    "(",
+    ")",
+    "C",
+    "AC",
     "7",
     "8",
     "9",
@@ -21,9 +32,35 @@ function App() {
     ".",
     "=",
     "+",
+  ]);
+
+  const landscapeOperatorsList = [
+    "C",
+    "7",
+    "8",
+    "9",
+    "/",
+    "AC",
+    "4",
+    "5",
+    "6",
+    "*",
+    "(",
+    "1",
+    "2",
+    "3",
+    "-",
+    ")",
+    "0",
+    ".",
+    "=",
+    "+",
   ];
 
-  const extraOperatorsList = ["(", ")", "C", "AC"];
+  const size = useWindowSize();
+
+  if (size.height < 500) {
+  }
 
   const [result, setResult] = useState<any>("");
 
@@ -32,8 +69,12 @@ function App() {
 
     switch (clickedKeyValue) {
       case "=":
-        /* eslint no-eval: 0 */
-        setResult(String(eval(result)));
+        try {
+          /* eslint no-eval: 0 */
+          setResult(String(eval(result)));
+        } catch (error) {
+          console.error(error);
+        }
         break;
       case "C":
         if (result !== "") {
@@ -49,16 +90,59 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <div>{result}</div>
-      <CalculatorKeys
-        operatorsList={operatorsList}
-        extraOperatorsList={extraOperatorsList}
-        resultHandler={resultHandler}
-      />
-      <div>Alexandru Bejenaru</div>
+    <div className="app flex flex-col">
+      <div className="app__header--background flex">
+        <div className="app__header text-right">{result || "0"}</div>
+      </div>
+      <div className="app__body">
+        <CalculatorKeys
+          portraitOperatorsList={portraitOperatorsList}
+          landscapeOperatorsList={landscapeOperatorsList}
+          resultHandler={resultHandler}
+        />
+      </div>
+      <div className="app__footer flex justify-between mt-5 items-center">
+        <div className="flex items-center">
+          <a href="https://github.com/AlexBeje/virtual-piano">
+            <AiFillGithub className="icon--hover mr-5" />
+          </a>
+          <a href="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2F1lLwlLr8TfMnZtU2nYM4P1%2Fvirtual-piano%3Fnode-id%3D0%253A1">
+            <FiFigma className="icon--hover" />
+          </a>
+        </div>
+        <a href="https://www.alexbejenaru.dev">
+          <div className="app__author flex items-center">
+            <AiOutlineCopyrightCircle />
+            Alexandru Bejenaru
+          </div>
+        </a>
+      </div>
     </div>
   );
+}
+
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState<any>({
+    width: undefined,
+    height: undefined,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowSize;
 }
 
 export default App;
