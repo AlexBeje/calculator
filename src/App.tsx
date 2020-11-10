@@ -1,58 +1,34 @@
 import React, { useState } from "react";
 import "./App.scss";
 
+import CalculatorKeys from "./components/calculatorKeys/calculatorKeys.component";
+
 function App() {
   const operatorsList = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
     "7",
     "8",
     "9",
+    "/",
+    "4",
+    "5",
+    "6",
+    "*",
+    "1",
+    "2",
+    "3",
+    "-",
     "0",
     ".",
-    "+",
-    "-",
-    "*",
-    "/",
     "=",
+    "+",
   ];
 
   const extraOperatorsList = ["(", ")", "C", "AC"];
 
   const [result, setResult] = useState<any>("");
 
-  const operatorsRenderer = operatorsList.map((operator, i) => {
-    return (
-      <button
-        className="app__button"
-        onClick={(event) => resultHandler(event)}
-        value={operator}
-        key={operator + i}
-      >
-        {operator}
-      </button>
-    );
-  });
-
-  const extraOperatorsRenderer = extraOperatorsList.map((extraOperator, i) => {
-    return (
-      <button
-        className="app__button"
-        onClick={(event) => resultHandler(event)}
-        value={extraOperator}
-        key={extraOperator + i}
-      >
-        {extraOperator}
-      </button>
-    );
-  });
-
-  const resultHandler = (event: any) => {
-    const clickedKeyValue = event.target.value;
+  const resultHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const clickedKeyValue = e.currentTarget.value;
 
     switch (clickedKeyValue) {
       case "=":
@@ -74,9 +50,13 @@ function App() {
 
   return (
     <div className="app">
-      <div>RESULT: {result}</div>
-      <div>{operatorsRenderer}</div>
-      <div>{extraOperatorsRenderer}</div>
+      <div>{result}</div>
+      <CalculatorKeys
+        operatorsList={operatorsList}
+        extraOperatorsList={extraOperatorsList}
+        resultHandler={resultHandler}
+      />
+      <div>Alexandru Bejenaru</div>
     </div>
   );
 }
