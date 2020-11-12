@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "https://alexbeje.github.io/calculator/static/css/main.f10506c7.chunk.css",
-    "main.js": "https://alexbeje.github.io/calculator/static/js/main.e645cb88.chunk.js",
-    "main.js.map": "https://alexbeje.github.io/calculator/static/js/main.e645cb88.chunk.js.map",
+    "main.js": "https://alexbeje.github.io/calculator/static/js/main.bd10e12a.chunk.js",
+    "main.js.map": "https://alexbeje.github.io/calculator/static/js/main.bd10e12a.chunk.js.map",
     "runtime-main.js": "https://alexbeje.github.io/calculator/static/js/runtime-main.1d7a7d6f.js",
     "runtime-main.js.map": "https://alexbeje.github.io/calculator/static/js/runtime-main.1d7a7d6f.js.map",
     "static/js/2.20df145b.chunk.js": "https://alexbeje.github.io/calculator/static/js/2.20df145b.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.1d7a7d6f.js",
     "static/js/2.20df145b.chunk.js",
     "static/css/main.f10506c7.chunk.css",
-    "static/js/main.e645cb88.chunk.js"
+    "static/js/main.bd10e12a.chunk.js"
   ]
 }
