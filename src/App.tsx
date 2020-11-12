@@ -103,7 +103,7 @@ function App() {
       </div>
       <div className="app__footer flex justify-between mt-5 items-center">
         <div className="flex items-center">
-          <a href="https://alexbeje.github.io/calculator/">
+          <a href="https://github.com/AlexBeje/calculator">
             <AiFillGithub className="icon--hover mr-5" />
           </a>
           <a href="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FmNq6fZzUYHWq1aUmZP1jnk%2Fcalculator%3Fnode-id%3D0%253A1">
